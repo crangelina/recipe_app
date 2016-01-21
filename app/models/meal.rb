@@ -15,7 +15,7 @@ class Meal < ActiveRecord::Base
   }
 
   def self.search(search)
-    like_operator = Rails.env.production? ? "SLIKE" : "LIKE"
+    like_operator = Rails.env.production? ? "ILIKE" : "LIKE"
     where("name #{like_operator} ?", "%#{search}%")
   end
 
