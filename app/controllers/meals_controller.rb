@@ -2,6 +2,7 @@ require "pp"
 
 class MealsController < ApplicationController
   before_filter :set_meal, only: [:show, :update, :edit, :destroy]
+  before_filter :set_tags, only: [:new, :edit]
 
   def index
     @meals = params[:search] ? Meal.search(params[:search]) : Meal.all
@@ -15,7 +16,6 @@ class MealsController < ApplicationController
 
   def new
     @meal = Meal.new
-    @tags = Meal::TAGS
     
     3.times do 
       @meal.ingredients.build
@@ -33,8 +33,16 @@ class MealsController < ApplicationController
     end
   end
 
-  # TODO
+  def edit
+  end
+
   def update
+    pp params
+    if @meal.update_attributes(meal_params)
+      redirect_to @meal
+    else
+      render action: "edit"
+    end
   end
 
   # TODO
@@ -50,13 +58,17 @@ class MealsController < ApplicationController
         :tag, 
         :servings, 
         :avatar, 
-        :ingredients_attributes => [:name, :amount], 
-        :directions_attributes => [:step]
+        :ingredients_attributes => [:name, :amount, :id], 
+        :directions_attributes => [:step, :id]
       )
     end
 
     def set_meal
       @meal = Meal.find(params[:id])
+    end
+
+    def set_tags
+      @tags = Meal::TAGS
     end
 
 end

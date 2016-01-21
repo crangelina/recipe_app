@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('page:load', function() {
 
   var $directionsButton = $("#more-directions-button");
   var $directionsWrapper  = $("#more-directions-wrapper");
