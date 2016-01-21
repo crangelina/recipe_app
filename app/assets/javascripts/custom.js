@@ -81,7 +81,7 @@ $(document).on('page:load', function() {
     $secondDivCol.append($secondDivFormGroup);
     $secondDivFormGroup.append($nameInput);
 
-    $nameInput.focus();
+    $amountInput.focus();
 
     ingredientIndex++
   });
