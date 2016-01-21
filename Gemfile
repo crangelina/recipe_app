@@ -6,6 +6,8 @@ gem 'rails', '4.2.5'
 gem 'bootstrap-sass'
 gem 'will_paginate-bootstrap'
 gem 'carrierwave'
+gem "figaro"
+gem "fog"
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use SCSS for stylesheets
