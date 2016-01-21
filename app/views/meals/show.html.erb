@@ -1,0 +1,38 @@
+<div id="show-page">
+
+  <div class="row" id="description">
+    <div class="col-sm-12">
+      <h1><%= @meal.name %></h1>
+    </div>
+    <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <p><%= @meal.description %></p>
+    </div>
+    <div class="col-sm-12">
+      <p><%= @meal.tag.capitalize %> | <%= @meal.servings %> servings</p>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-2 col-xs-12">
+        <%= image_tag(@meal.avatar.url, class: "meal-picture-show-page") if @meal.avatar? %>
+        <ul id="ingredients">
+          <%= render partial: "ingredients/ingredient", collection: @ingredients %>
+        </ul>
+      </div>
+
+      <div class="col-sm-4 col-xs-10 col-xs-offset-1">
+        <ol id="directions">
+          <%= render partial: "directions/direction", collection: @directions %>
+        </ol>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 more-buttons">
+        <hr>
+        <i class="fa fa-plus"></i><%= link_to " Step", new_meal_direction_path(@meal) %><br>
+        <i class="fa fa-plus"></i><%= link_to " Ingredient", new_meal_ingredient_path(@meal) %>
+      </div>
+    </div>
+
+</div>

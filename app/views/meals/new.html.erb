@@ -1,0 +1,127 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>New Meal</h1>
+  </div>
+</div>
+
+<%= form_for @meal do |f| %>
+
+  <!-- MEAL -->
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="form-group">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %><br>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :avatar, "Photo" %>
+        <%= f.file_field :avatar %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :tag, "Meal" %><br>
+        <% @tags.each do |tag| %>
+          <%= f.radio_button(:tag, tag) %> &nbsp;
+          <%= f.label(:tag, tag, class: "radio-button") %><br>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :servings %><br>
+        <%= f.number_field :servings, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <!-- INGREDIENTS -->
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h5>Ingredients</h5>
+    </div>
+  </div>
+
+  <%= f.fields_for :ingredients do |ff| %>
+
+    <div class="row">
+      <div class="col-sm-3 col-sm-offset-3">  
+        <div class="form-group">
+          <%= ff.text_field :amount, class: "form-control", placeholder: "Amount" %>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= ff.text_field :name, class: "form-control", placeholder: "Name" %>
+        </div>
+      </div>
+    
+    </div>
+    
+  <% end %>
+
+  <!-- INGREDIENTS ADDED FROM JS -->
+  <div id="more-ingredients-wrapper"></div>
+
+  <!-- BUTTON TO ADD INGREDIENTS -->  
+  <div class="row">
+    <div class="col-sm-12 col-sm-offset-3">  
+      <button id="more-ingredients-button" class="btn btn-link" type="button"><i class="fa fa-plus"></i> More</button>
+    </div>
+  </div>
+
+
+  <!-- DIRECTIONS -->
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h5>Directions</h5>
+    </div>
+  </div>
+
+  <%= f.fields_for :directions do |ff| %>
+
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div class="form-group">
+          <%= ff.text_area :step, class: "form-control", placeholder: "Step #{ff.index + 1}" %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+  <!-- DIRECTIONS ADDED FROM JS -->
+  <div id="more-directions-wrapper"></div>
+
+  <!-- BUTTON TO ADD DIRECTIONS -->  
+  <div class="row">
+    <div class="col-sm-12 col-sm-offset-3">  
+      <button id="more-directions-button" class="btn btn-link" type="button"><i class="fa fa-plus"></i> More</button>
+    </div>
+  </div>
+
+  <!-- SUBMIT --> 
+  <div class="row"> 
+    <div class="col-xs-12">
+      <div class="form-group" id="submit-button-wrapper">
+        <%= f.submit "Submit", class: "btn btn-default" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+

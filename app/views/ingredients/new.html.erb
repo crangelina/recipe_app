@@ -1,0 +1,43 @@
+
+<div class="row">
+  <div class="col-sm-12">
+    <h1>New Ingredient</h1>
+  </div>
+</div>
+
+<%= form_for :ingredient, url: meal_ingredients_path(@meal) do |f| %>
+ <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">  
+      <div class="form-group">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="form-group">
+        <%= f.label :amount %><br>
+        <%= f.text_field :amount, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row button-wrapper">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <%= f.submit "Submit", class: "btn btn-default" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+<div class="row button-wrapper">
+  <div class="col-sm-12">
+    <i class="fa fa-arrow-left"></i> <%= link_to "Back", meal_path(@meal) %>
+  </div>
+</div>
+
+  

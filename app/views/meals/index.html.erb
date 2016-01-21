@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h1>All Meals</h1>
+  </div>
+</div>
+  
+<!-- MEAL -->
+<% @meals.each do |meal| %>
+  
+  <div class="row meal-wrapper">
+    <div class="col-sm-5 meal-picture-wrapper">
+      <%= image_tag(meal.avatar.url, class: "meal-picture-index-page") if meal.avatar? %>
+    </div>
+    <div class="col-sm-5">
+      <h3 class="meal-name"><%= link_to meal.name, meal_path(meal) %></h3>
+      <p><%= meal.description %></p>
+    </div>
+  </div>
+
+<% end %>
+
+<!-- PAGINATION -->
+<div class="row">
+  <div class="pagination-wrapper">
+    <div class="col-sm-12">
+      <div class="pagination">
+        <%= will_paginate @meals, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+</div>
+
