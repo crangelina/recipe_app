@@ -1,11 +1,11 @@
 $(document).on('page:load', function() {
 
-  var $directionsButton = $("#more-directions-button");
+  var $directionsButton   = $("#more-directions-button");
   var $directionsWrapper  = $("#more-directions-wrapper");
-  var $ingredientsButton = $("#more-ingredients-button");
-  var $ingredientsWrapper = $("#more-ingredients-wrapper")
-  var directionIndex = 3;
-  var ingredientIndex = 3;
+  var $ingredientsButton  = $("#more-ingredients-button");
+  var $ingredientsWrapper = $("#more-ingredients-wrapper");
+  var directionIndex      = 3;
+  var ingredientIndex     = 3;
 
 
   //------ DIRECTIONS --------//
@@ -21,10 +21,10 @@ $(document).on('page:load', function() {
     $divFormGroup.addClass("form-group");
 
     $input = $("<textarea>", {
-      class: "form-control",
-      placeholder: "Step " + (directionIndex + 1),
-      name: "meal[directions_attributes][" + directionIndex + "][step]",
-      id: "meal_directions_attributes_" + directionIndex + "_step",
+      class      : "form-control",
+      name       : "meal[directions_attributes][" + directionIndex + "][step]",
+      id         : "meal_directions_attributes_" + directionIndex + "_step",
+      placeholder: "Step " + (directionIndex + 1)
     });
 
     // append divs
@@ -57,19 +57,19 @@ $(document).on('page:load', function() {
     $secondDivFormGroup.addClass("form-group");
 
     $nameInput = $("<input>", {
-      class: "form-control",
-      type: "text",
-      placeholder: "Name",
-      name: "meal[ingredients_attributes][" + ingredientIndex + "][name]",
-      id: "meal_ingredients_attributes_" + ingredientIndex + "_name",
+      class      : "form-control",
+      type       : "text",
+      name       : "meal[ingredients_attributes][" + ingredientIndex + "][name]",
+      id         : "meal_ingredients_attributes_" + ingredientIndex + "_name",
+      placeholder: "Name"
     });
 
     $amountInput = $("<input>", {
-      class: "form-control",
-      type: "text",
-      placeholder: "Amount",
-      name: "meal[ingredients_attributes][" + ingredientIndex + "][amount]",
-      id: "meal_ingredients_attributes_" + ingredientIndex + "_amount",
+      class      : "form-control",
+      type       : "text",
+      name       : "meal[ingredients_attributes][" + ingredientIndex + "][amount]",
+      id         : "meal_ingredients_attributes_" + ingredientIndex + "_amount",
+      placeholder: "Amount"
     });
 
     // append divs
