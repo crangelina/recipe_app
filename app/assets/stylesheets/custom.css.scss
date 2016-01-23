@@ -3,6 +3,7 @@
 
 $green: #16a085;
 $grey : #403f3f;
+$red  : #a94442;
 
 
 
@@ -94,9 +95,10 @@ i {
 
 
 
-//-------- PAGE - NEW ---------//
+//-------- PARTIAL - MEALS/FORM ---------//
 .radio-button {
   font-weight: 400;
+  padding-left: 10px;
 }
 
 #submit-button-wrapper {
@@ -118,6 +120,25 @@ h5 {
   color     : $green;
   margin-top: -20px;
 }
+
+#error-messages-wrapper {
+  padding: 0;
+  i {
+    color: $red;
+  }
+}
+
+.error-messages {
+  color     : $red;
+  text-align: center;
+  list-style: none;
+  padding-left: 0;
+}
+
+.field_with_errors {
+  display: inline;
+}
+
 
 
 
@@ -152,6 +173,11 @@ h5 {
 
 .more-buttons {
   margin-bottom: 30px;
+  line-height: 25px;
+}
+
+.cushion {
+  margin-left: 20px;
 }
 
 

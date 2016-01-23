@@ -30,9 +30,11 @@
     <div class="row">
       <div class="col-xs-12 more-buttons">
         <hr>
-        <i class="fa fa-plus"></i><%= link_to " Add Step", new_meal_direction_path(@meal) %><br>
-        <i class="fa fa-plus"></i><%= link_to " Add Ingredient", new_meal_ingredient_path(@meal) %><br><br>
-        <i class="fa fa-pencil"></i><%= link_to " Edit Meal", edit_meal_path(@meal) %>
+        <i class="fa fa-plus cushion"></i><%= link_to " Step", new_meal_direction_path(@meal) %>
+        <span> | </span>
+        <%= link_to " Ingredient", new_meal_ingredient_path(@meal) %><br>
+        <i class="fa fa-pencil"></i><%= link_to " Edit", edit_meal_path(@meal) %><br>
+        <i class="fa fa-trash"></i><%= link_to " Delete", meal_path, method: "delete" %>
       </div>
     </div>
 

@@ -2,7 +2,7 @@ require "pp"
 
 class MealsController < ApplicationController
   before_filter :set_meal, only: [:show, :update, :edit, :destroy]
-  before_filter :set_tags, only: [:new, :edit]
+  before_filter :set_tags, only: [:new, :create, :edit]
 
   def index
     @meals = params[:search] ? Meal.search(params[:search]) : Meal.all
@@ -11,7 +11,7 @@ class MealsController < ApplicationController
 
   def show
     @ingredients = @meal.ingredients
-    @directions = @meal.directions
+    @directions  = @meal.directions
   end
 
   def new
@@ -27,8 +27,10 @@ class MealsController < ApplicationController
     @meal = Meal.new(meal_params)
 
     if @meal.save
+      flash[:success] = "#{@meal.name} has been successfully created."
       redirect_to @meal
     else
+      flash.now[:danger] = "The meal could not be created."
       render action: "new"
     end
   end
@@ -47,6 +49,9 @@ class MealsController < ApplicationController
 
   # TODO
   def destroy
+    @meal.destroy
+    flash[:info] = "#{@meal.name} has been successfully deleted."
+    redirect_to meals_path
   end
 
 
@@ -59,7 +64,7 @@ class MealsController < ApplicationController
         :servings, 
         :avatar, 
         :ingredients_attributes => [:name, :amount, :id], 
-        :directions_attributes => [:step, :id]
+        :directions_attributes  => [:step, :id]
       )
     end
 

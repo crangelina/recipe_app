@@ -2,8 +2,10 @@ class Meal < ActiveRecord::Base
 
   has_many :ingredients, dependent: :destroy
   has_many :directions,  dependent: :destroy
-  accepts_nested_attributes_for :ingredients
-  accepts_nested_attributes_for :directions
+  accepts_nested_attributes_for :ingredients, reject_if: :all_blank
+  accepts_nested_attributes_for :directions, reject_if: :all_blank
+
+  validates :name, :description, :servings, presence: true
   
   mount_uploader :avatar, AvatarUploader
   
@@ -11,7 +13,7 @@ class Meal < ActiveRecord::Base
 
   validates :tag, inclusion: { 
     in: TAGS,
-    message: "Invalid tag name" 
+    message: " (Meal) must be selected" 
   }
 
   def self.search(search)

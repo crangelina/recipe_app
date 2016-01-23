@@ -1,5 +1,17 @@
 <%= form_for @meal do |f| %>
 
+ <div class="row">
+    <div class="col-sm-12">
+      <% if @meal.errors.any? %>
+        <ul id="error-messages-wrapper">
+          <% @meal.errors.full_messages.each do |msg| %>
+            <li class="error-messages"><i class="fa fa-caret-right"></i> <%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
   <!-- MEAL -->
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
@@ -20,9 +32,11 @@
 
       <div class="form-group">
         <%= f.label :tag, "Meal" %><br>
-        <% @tags.each do |tag| %>
-          <%= f.radio_button(:tag, tag) %> &nbsp;
-          <%= f.label(:tag, tag, class: "radio-button") %><br>
+        <% if @tags %>
+          <% @tags.each do |tag| %>
+            <%= f.radio_button(:tag, tag) %> &nbsp;
+            <%= f.label(:tag, tag, class: "radio-button") %><br>
+          <% end %>
         <% end %>
       </div>
 
