@@ -26,5 +26,15 @@ $(function() {
     ingredientIndex++
   });
 
+  $('.modal-link').on('click', function() {
+    day = $(this).data('day');
+    tag = $(this).data('tag');
+
+    $("#entry_day").val(day);
+    $("#entry_tag").val(tag);
+                        
+  });
+
+
 });
 

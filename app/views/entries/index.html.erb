@@ -1,0 +1,137 @@
+<div id="entries-wrapper">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Entries</h1>
+    </div>
+  </div>
+
+  <nav>
+    <ul class="pager">
+      <li class="previous"><%= link_to raw("<span aria-hidden='true'>&larr;</span> Prev"), entries_path(:date => "#{@start-1.week}") %></li>
+      <li><%= link_to "Today", entries_path %></li>
+      <li class="next"><%= link_to raw("Next <span aria-hidden='true'>&rarr;</span>"), entries_path(:date => "#{@start+1.week}") %></li>
+    </ul>
+  </nav>
+
+  <% @week.each do |day| %>
+    <div class="day-wrapper">
+      <div class="row days-row">
+        <div class="col-sm-12">
+          <h3><%= day.strftime("%a %d") %></h3>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-sm-3">
+          <div class="meal-tag"><%= link_to "Breakfast", "#myModal", :data => {:toggle => "modal", :day => day.strftime('%F'), :tag => "Breakfast"}, class: "modal-link" %></div>
+          <div class="content">
+            <ul>
+              <% Entry.where({tag: "Breakfast", day: day.strftime('%F')}).each do |entry| %>
+                <% if entry.meal %>
+                <li>
+                    <%= link_to entry.meal.name, meal_path(entry.meal) %> 
+                    <button class="btn btn-link"><%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %></button>
+                  </li>
+                <% end %>
+                <% if entry.note %>
+                  <li>
+                    <%= entry.note %>
+                    <button class="btn btn-link"><%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %></button>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="meal-tag"><%= link_to "Lunch", "#myModal", :data => {:toggle => "modal", :day => day.strftime('%F'), :tag => "Lunch"}, class: "modal-link" %></div>
+          <div class="content">
+            <ul>
+              <% Entry.where({tag: "Lunch", day: day.strftime('%F')}).each do |entry| %>
+                <% if entry.meal %>
+                <li>
+                    <%= link_to entry.meal.name, meal_path(entry.meal) %> 
+                    <button class="btn btn-link"><%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %></button>
+                  </li>
+                <% end %>
+                <% if entry.note %>
+                  <li>
+                    <%= entry.note %>
+                    <button class="btn btn-link"><%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %></button>
+                  </li>
+                <% end %> 
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="meal-tag"><%= link_to "Dinner", "#myModal", :data => {:toggle => "modal", :day => day.strftime('%F'), :tag => "Dinner"}, class: "modal-link" %></div>
+          <div class="content">
+            <ul>
+              <% Entry.where({tag: "Dinner", day: day.strftime('%F')}).each do |entry| %> 
+                <% if entry.meal %>
+                <li>
+                    <%= link_to entry.meal.name, meal_path(entry.meal) %> 
+                    <button class="btn btn-link"><%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %></button>
+                  </li>
+                <% end %>
+                <% if entry.note %>
+                  <li>
+                    <%= entry.note %>
+                    <button class="btn btn-link"><%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %></button>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="meal-tag"><%= link_to "Snack", "#myModal", :data => {:toggle => "modal", :day => day.strftime('%F'), :tag => "Snack"}, class: "modal-link" %></div>
+          <div class="content">
+            <ul>
+              <% Entry.where({tag: "Snack", day: day.strftime('%F')}).each do |entry| %>
+                <li> 
+                  <% if entry.meal %>
+                    <%= link_to entry.meal.name, meal_path(entry.meal) %> 
+                  <% end %>
+                  <button class="btn btn-link"><%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %></button>
+                </li>
+                <li>
+                  <% if entry.note %>
+                    <%= entry.note %>
+                  <% end %>
+                  <button class="btn btn-link"><%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %></button>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+
+  <!-- MODAL -->
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">New Entry</h4>
+        </div>
+
+        <div class="modal-body">
+          <%= render "new_entry" %>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+
+
+

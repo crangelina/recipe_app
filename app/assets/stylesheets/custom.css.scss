@@ -115,12 +115,6 @@ h5 {
   font-weight: bold;
 }
 
-#more-ingredients-button,
-#more-directions-button {
-  color     : $green;
-  margin-top: -20px;
-}
-
 #error-messages-wrapper {
   padding: 0;
   i {
@@ -171,14 +165,56 @@ h5 {
   border-radius: 5px;
 }
 
-.more-buttons {
-  margin-bottom: 30px;
-  line-height: 25px;
-}
-
 .cushion {
   margin-left: 20px;
 }
+
+//-------- PAGE - ENTRIES ---------//
+
+
+#entries-wrapper {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.day-wrapper {
+  min-height: 150px;
+  &:nth-child(even) {
+    background-color: #eee;
+  }
+  &:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+}
+
+.days-row {
+  margin-bottom: 10px;
+  h3 {
+    font-weight: 300;
+    margin-top: 5px;
+  }
+}
+
+.meal-tag {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+  a:hover,
+  a:focus {
+    color: transparentize($green, 0.3);
+  }
+}
+
+#entries-wrapper {
+  ul {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  li {
+    list-style: none;
+  }
+}
+
 
 
 

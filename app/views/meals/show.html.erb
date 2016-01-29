@@ -8,7 +8,11 @@
       <p><%= @meal.description %></p>
     </div>
     <div class="col-sm-12">
-      <p><%= @meal.tag.capitalize %> | <%= @meal.servings %> servings</p>
+      <div><%= @meal.tag.capitalize %> | <%= @meal.servings %> servings</div>
+      <div>
+        <button class="btn btn-link"><%= link_to raw("<i class='fa fa-pencil'></i>"), edit_meal_path(@meal) %></button>
+        <button class="btn btn-link"><%= link_to raw("<i class='fa fa-trash'></i>"), meal_path, method: "delete" %></button>
+      </div>
     </div>
   </div>
 
@@ -24,17 +28,6 @@
         <ol id="directions">
           <%= render partial: "directions/direction", collection: @directions %>
         </ol>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12 more-buttons">
-        <hr>
-        <i class="fa fa-plus cushion"></i><%= link_to " Step", new_meal_direction_path(@meal) %>
-        <span> | </span>
-        <%= link_to " Ingredient", new_meal_ingredient_path(@meal) %><br>
-        <i class="fa fa-pencil"></i><%= link_to " Edit", edit_meal_path(@meal) %><br>
-        <i class="fa fa-trash"></i><%= link_to " Delete", meal_path, method: "delete" %>
       </div>
     </div>
 
