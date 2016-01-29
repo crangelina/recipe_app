@@ -1,8 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-$green: #16a085;
-$grey : #403f3f;
+$green: #a1be95;
+$grey: #5b6b7e;
+$darkgrey: #474e56;
+$blue: #92aac7;
 $red  : #a94442;
 
 
@@ -15,10 +17,11 @@ $red  : #a94442;
 
 h1 {
   text-align   : center;
-  font-family  : 'Lobster', cursive;
+  font-family  : 'Fira Sans 2', sans-serif;
   font-size    : 48px;
-  text-shadow  : 0 1px 0 #000;
+  text-shadow  : 0 1px 0 #2a2e33;
   margin-bottom: 30px;
+  color: $darkgrey;
 }
 
 a, {
@@ -167,6 +170,18 @@ h5 {
 
 .cushion {
   margin-left: 20px;
+}
+
+.poop {
+  border-radius: 50%;
+  border-color: $blue;
+  padding: 3px 8px;
+  &:hover {
+    border-color: $blue;
+  }
+  i {
+    color: $blue;
+  }
 }
 
 //-------- PAGE - ENTRIES ---------//

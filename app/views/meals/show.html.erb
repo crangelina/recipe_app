@@ -10,8 +10,8 @@
     <div class="col-sm-12">
       <div><%= @meal.tag.capitalize %> | <%= @meal.servings %> servings</div>
       <div>
-        <button class="btn btn-link"><%= link_to raw("<i class='fa fa-pencil'></i>"), edit_meal_path(@meal) %></button>
-        <button class="btn btn-link"><%= link_to raw("<i class='fa fa-trash'></i>"), meal_path, method: "delete" %></button>
+        <button class="poop btn btn-default"><%= link_to raw("<i class='fa fa-pencil'></i>"), edit_meal_path(@meal) %></button>
+        <button class="poop btn btn-default"><%= link_to raw("<i class='fa fa-trash'></i>"), meal_path, method: "delete" %></button>
       </div>
     </div>
   </div>
