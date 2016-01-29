@@ -17,7 +17,7 @@ $red  : #a94442;
 
 h1 {
   text-align   : center;
-  font-family  : 'Fira Sans 2', sans-serif;
+  font-family  : 'fira-sans-2', sans-serif;
   font-size    : 48px;
   text-shadow  : 0 1px 0 #2a2e33;
   margin-bottom: 30px;
@@ -37,6 +37,10 @@ i {
 
 .button-wrapper {
   text-align: center;
+}
+
+.form-control:focus {
+  border-color: #A4C773;
 }
 
 
@@ -108,10 +112,6 @@ i {
   text-align   : center;
   margin-top   : 10px;
   margin-bottom: 50px;
-}
-
-.form-control:focus {
-  border-color: $green;
 }
 
 h5 {
