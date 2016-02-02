@@ -14,7 +14,9 @@ class DirectionsController < ApplicationController
   end
 
   private
+
     def direction_params
       params.require(:direction).permit(:step)
     end
+    
 end

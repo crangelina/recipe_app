@@ -1,11 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-$green: #a1be95;
-$grey: #5b6b7e;
-$darkgrey: #474e56;
-$blue: #92aac7;
-$red  : #a94442;
+$green    : #a1be95;
+$blue     : #92aac7;
+$red   : #a94442;
+$grey     : #5b6b7e;
+$darkgrey : #474e56;
+$lightgrey: #bdc3c7;
+$greyoutline: #585858;
+
+
+// $pink  : #ffcab8;
+// $yellow: #e2dfa2;
 
 
 
@@ -16,12 +22,12 @@ $red  : #a94442;
 }
 
 h1 {
+  color        : $darkgrey;
   text-align   : center;
-  font-family  : 'fira-sans-2', sans-serif;
+  font-family  : 'Quicksand', sans-serif;
+  font-weight  : 300;
   font-size    : 48px;
-  text-shadow  : 0 1px 0 #2a2e33;
   margin-bottom: 30px;
-  color: $darkgrey;
 }
 
 a, {
@@ -46,6 +52,11 @@ i {
 
 
 //--------- NAVBAR ----------//
+
+a.navbar-brand:hover {
+  opacity: .8;
+}
+
 .logo {
   height    : 28px;
   margin-top: -4px;
@@ -62,12 +73,12 @@ i {
 .pagination {
   .active span,
   .active span:hover {
-    background-color: $green;
-    border-color    : $green;
+    background-color: $blue;
+    border-color    : $blue;
   }
   li a,
   li a:hover {
-    color: $green;
+    color: $blue;
   }
 }
 
@@ -84,7 +95,7 @@ i {
 }
 
 .meal-name {
-  color      : $green;
+  color: $green;
   font-weight: 300;
   margin-top : 10px;
 }
@@ -96,26 +107,41 @@ i {
 }
 
 .meal-picture-index-page {
-  height       : 100px;
+  height: 100px;
   border-radius: 5px;
 }
 
 
 
+
+
 //-------- PARTIAL - MEALS/FORM ---------//
+
+h5.form-header {
+  display    : inline-block;
+  font-weight: bold;
+}
+
 .radio-button {
-  font-weight: 400;
+  font-weight : 400;
   padding-left: 10px;
+}
+
+#more-ingredients-button,
+#more-directions-button {
+  i {
+    font-size: 16px;
+    color    : $lightgrey;
+    &:hover {
+      color: $blue;
+    }
+  }
 }
 
 #submit-button-wrapper {
   text-align   : center;
   margin-top   : 10px;
   margin-bottom: 50px;
-}
-
-h5 {
-  font-weight: bold;
 }
 
 #error-messages-wrapper {
@@ -126,9 +152,9 @@ h5 {
 }
 
 .error-messages {
-  color     : $red;
-  text-align: center;
-  list-style: none;
+  color: $red;
+  text-align  : center;
+  list-style  : none;
   padding-left: 0;
 }
 
@@ -139,19 +165,49 @@ h5 {
 
 
 
+
+
 //-------- PAGE - SHOW ---------//
-#show-page {
-  text-align: center;
+
+.jumbotron {
+  opacity : .5;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  h1 {
+    position: center;
+    color: #fff;
+    text-shadow: 1px 0 0  $greyoutline, 
+                 0 -1px 0 $greyoutline, 
+                 0 1px 0  $greyoutline, 
+                 -1px 0 0 $greyoutline;
+  }
 }
 
 #description {
+  text-align   : center;
   margin-bottom: 30px;
+  .description-button {
+    display      : inline-block;
+    padding      : 10px;
+    margin-bottom: 10px;
+    border       : 1px solid $blue;
+    border-radius: 2px;
+    i {
+      color: $blue;
+    }
+  }
+}
+
+.servings {
+  margin-bottom: 10px;
 }
 
 #ingredients {
-  list-style : none;
-  text-align : left;
-  margin-left: 25px;
+  list-style   : none;
+  text-align   : left;
+  padding-left : 0;
+  margin-bottom: 30px;
 }
 
 .ingredient-li {
@@ -159,7 +215,21 @@ h5 {
 }
 
 #directions {
-  text-align: left;
+  text-align   : left;
+  list-style   : none;
+  margin-bottom: 30px;
+  li {
+    margin-bottom: 5px;
+  }
+  .direction-counter {
+    color  : $green;
+    display: inline;
+    margin-left : -15px;
+    margin-right: 4px;
+  }
+  .direction-text {
+    display: inline;
+  }
 }
 
 .meal-picture-show-page {
@@ -172,64 +242,83 @@ h5 {
   margin-left: 20px;
 }
 
-.poop {
-  border-radius: 50%;
-  border-color: $blue;
-  padding: 3px 8px;
-  &:hover {
-    border-color: $blue;
-  }
-  i {
-    color: $blue;
+.show-page-buttons {
+  position: absolute;
+  bottom  : 3px;
+  right   : 3px;
+  .btn {
+    border-radius: 50%;
+    border-color : $blue;
+    padding      : 3px 8px;
+    &:hover {
+      border-color: $blue;
+    }
+    i {
+      color: $blue;
+    }
   }
 }
+
+
+
 
 //-------- PAGE - ENTRIES ---------//
 
-
-#entries-wrapper {
-  text-align: center;
-  margin-bottom: 50px;
+.pager a {
+  color: $blue;
 }
 
+.week-wrapper {
+  display: flex;
+  border-top   : 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  min-height: 200px;
+}
 .day-wrapper {
-  min-height: 150px;
-  &:nth-child(even) {
-    background-color: #eee;
+  border-right: 1px solid #ddd;
+  align-items : stretch;
+  &:first-child {
+    border-left: 1px solid #ddd;
   }
-  &:nth-child(odd) {
-    background-color: #f9f9f9;
+  h4 {
+    display: inline-block;
+    font-weight  : 300;
+    padding-right: 10px;
   }
-}
-
-.days-row {
-  margin-bottom: 10px;
-  h3 {
+  h5 {
     font-weight: 300;
-    margin-top: 5px;
+    text-decoration: underline;
   }
 }
 
-.meal-tag {
-  margin-top: -10px;
-  margin-bottom: 10px;
-  text-decoration: underline;
-  a:hover,
-  a:focus {
-    color: transparentize($green, 0.3);
+.day-wrapper ul {
+  list-style  : none;
+  padding-left: 0;
+}
+
+.modal-link {
+  margin-top: 7px;
+  font-size : 16px;
+  i {
+    color: $lightgrey;
+    &:hover {
+      color: $blue;
+    }
   }
 }
 
-#entries-wrapper {
-  ul {
-    padding: 0;
-    margin-bottom: 20px;
+.breakfast-list,
+.lunch-list,
+.dinner-list,
+.snack-list {
+  li, a, i {
+    color    : $green;
+    font-size: 13px;
   }
-  li {
-    list-style: none;
+  i:hover {
+    opacity: .8;
   }
 }
-
 
 
 

@@ -15,21 +15,26 @@
   <!-- MEAL -->
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
+
+      <!-- NAME -->
       <div class="form-group">
         <%= f.label :name %><br>
         <%= f.text_field :name, class: "form-control" %>
       </div>
 
+      <!-- DESCRIPTION -->
       <div class="form-group">
         <%= f.label :description %><br>
         <%= f.text_area :description, class: "form-control" %>
       </div>
 
+      <!-- AVATAR -->
       <div class="form-group">
         <%= f.label :avatar, "Photo" %>
         <%= f.file_field :avatar %>
       </div>
 
+      <!-- TAG -->
       <div class="form-group">
         <%= f.label :tag, "Meal" %><br>
         <% if @tags %>
@@ -40,22 +45,26 @@
         <% end %>
       </div>
 
+      <!-- SERVINGS -->
       <div class="form-group">
         <%= f.label :servings %><br>
         <%= f.number_field :servings, class: "form-control" %>
       </div>
     </div>
+
   </div>
 
   <!-- INGREDIENTS -->
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <h5>Ingredients</h5>
+      <h5 class="form-header">Ingredients</h5> 
+      <button id="more-ingredients-button" class="btn btn-link" type="button"><i class="fa fa-plus"></i></button>
     </div>
   </div>
 
   <%= f.fields_for :ingredients do |ff| %>
 
+    <!-- AMOUNT -->
     <div class="row">
       <div class="col-sm-3 col-sm-offset-3">  
         <div class="form-group">
@@ -63,6 +72,7 @@
         </div>
       </div>
 
+      <!-- NAME -->
       <div class="col-sm-3">
         <div class="form-group">
           <%= ff.text_field :name, class: "form-control", placeholder: "Name" %>
@@ -76,23 +86,18 @@
   <!-- INGREDIENTS ADDED FROM JS -->
   <div id="more-ingredients-wrapper"></div>
 
-  <!-- BUTTON TO ADD INGREDIENTS -->  
-  <div class="row">
-    <div class="col-sm-12 col-sm-offset-3">  
-      <button id="more-ingredients-button" class="btn btn-link" type="button"><i class="fa fa-plus"></i> More</button>
-    </div>
-  </div>
-
 
   <!-- DIRECTIONS -->
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <h5>Directions</h5>
+      <h5 class="form-header">Directions</h5> 
+      <button id="more-directions-button" class="btn btn-link" type="button"><i class="fa fa-plus"></i></button>
     </div>
   </div>
 
   <%= f.fields_for :directions do |ff| %>
 
+    <!-- STEP -->
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
         <div class="form-group">
@@ -106,14 +111,8 @@
   <!-- DIRECTIONS ADDED FROM JS -->
   <div id="more-directions-wrapper"></div>
 
-  <!-- BUTTON TO ADD DIRECTIONS -->  
-  <div class="row">
-    <div class="col-sm-12 col-sm-offset-3">  
-      <button id="more-directions-button" class="btn btn-link" type="button"><i class="fa fa-plus"></i> More</button>
-    </div>
-  </div>
 
-  <!-- SUBMIT --> 
+  <!-- SUBMIT BUTTON --> 
   <div class="row"> 
     <div class="col-xs-12">
       <div class="form-group" id="submit-button-wrapper">

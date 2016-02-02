@@ -10,7 +10,6 @@ $(function() {
 
   //------ DIRECTIONS --------//
   $directionsButton.on("click", function() {
-
     $html = JST["templates/directions-template"]({index: directionIndex});
     $directionsWrapper.append($html);
 
@@ -19,7 +18,6 @@ $(function() {
 
   //------ INGREDIENTS --------//
   $ingredientsButton.on("click", function() {
-    
     $html = JST["templates/ingredients-template"]({index: ingredientIndex});
     $ingredientsWrapper.append($html);
 
@@ -27,14 +25,12 @@ $(function() {
   });
 
   $('.modal-link').on('click', function() {
-    day = $(this).data('day');
-    tag = $(this).data('tag');
+    var day = $(this).data('day');
+    var tag = $(this).data('tag');
 
     $("#entry_day").val(day);
-    $("#entry_tag").val(tag);
-                        
+    $("#entry_tag").val(tag);                    
   });
-
 
 });
 

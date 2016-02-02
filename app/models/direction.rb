@@ -1,3 +1,5 @@
-class Direction < ActiveRecord::Base
+class Direction < ActiveRecord::Base 
+
   belongs_to :meal
+  
 end

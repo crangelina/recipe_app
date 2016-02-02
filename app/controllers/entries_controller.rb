@@ -1,4 +1,8 @@
+require "pp"
+
 class EntriesController < ApplicationController
+
+  before_filter :set_tags, only: [:index, :new, :create]
 
   def index
     if params[:date]
@@ -7,7 +11,7 @@ class EntriesController < ApplicationController
       @start = Date.today.at_beginning_of_week
     end
 
-    @week = @start..@start+6.days
+    @week = @start..@start+5.days
     @entry = Entry.new
   end
 
@@ -18,6 +22,7 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new(entry_params)
     if @entry.save
+      pp params
       flash[:success] = "#{@entry.tag} was successfully added."
       redirect_to(:back)
     else
@@ -41,4 +46,9 @@ class EntriesController < ApplicationController
                                     :note,
                                     :meal_id)
     end
+
+    def set_tags
+      @tags = Meal::TAGS
+    end
+    
 end

@@ -1,36 +1,35 @@
-
-
 <%= form_for @entry do |f| %>
-
- <div class="row">
-    <div class="col-sm-12">
-      <% if @entry.errors.any? %>
-        <ul id="error-messages-wrapper">
-          <% @entry.errors.full_messages.each do |msg| %>
-            <li class="error-messages"><i class="fa fa-caret-right"></i> <%= msg %></li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-  </div>
   
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
 
       
-
+      <!-- MEAL -->
       <div class="form-group">
         <%= f.collection_select :meal_id, Meal.all, :id, :name, {prompt: "Select a meal"}, {class: "form-control"}  %>
       </div>
 
+      <!-- NOTE -->
       <div class="form-group">
         <%= f.label :note %><br>
         <%= f.text_field :note, class: "form-control" %>
       </div>
 
-      <%= f.hidden_field :day, :value => params[:day] %>
-      <%= f.hidden_field :tag, :value => params[:tag] %>
+      <!-- TAG -->
+       <div class="form-group">
+        <%= f.label :tag, "Meal" %><br>
+        <% if @tags %>
+          <% @tags.each do |tag| %>
+            <%= f.radio_button(:tag, tag) %> &nbsp;
+            <%= f.label(:tag, tag, class: "radio-button") %><br>
+          <% end %>
+        <% end %>
+      </div>
 
+      <!-- DAY -->
+      <%= f.hidden_field :day, :value => params[:day] %>
+
+      <!-- SUBMIT BUTTON -->
       <div class="form-group button-wrapper">
         <%= f.submit "Submit", class: "btn btn-default" %>
       </div>

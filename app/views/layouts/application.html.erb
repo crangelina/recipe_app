@@ -4,38 +4,37 @@
     <title>Recipe App</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300|Lobster' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-
-    <script src="https://use.typekit.net/ohh2bry.js"></script>
-    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <!-- GOOGLE FONTS -->
+    <link href='https://fonts.googleapis.com/css?family=Quicksand:300|Open+Sans:400,300|Lobster' rel='stylesheet' type='text/css'>
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <%= csrf_meta_tags %>
   </head>
 
   <body>
+
     <!-- NAVBAR -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
+        <!-- LOGO -->
         <div class="navbar-header">
           <%= link_to root_path, class: "navbar-brand" do %>
             <%= image_tag("logo.png", class: "logo") %>
           <% end %>
         </div>
-
+        <!-- SEARCH -->
         <%= form_tag meals_path, :method => "get", class: "navbar-form navbar-right" do %>
           <div class="form-group">
             <%= text_field_tag :search, params[:search], placeholder: "Name of meal", class: "form-control" %>
             <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
           </div>
         <% end %>
-
+        <!-- LINKS -->
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Entries", entries_path %></li>
           <li><%= link_to "Meals", root_path %></li>
           <li><%= link_to "New", new_meal_path %></li>
         </ul>
-
       </div>
     </nav>
 

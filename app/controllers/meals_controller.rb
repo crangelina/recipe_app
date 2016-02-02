@@ -1,5 +1,3 @@
-require "pp"
-
 class MealsController < ApplicationController
   before_filter :set_meal, only: [:show, :update, :edit, :destroy]
   before_filter :set_tags, only: [:new, :create, :edit]
@@ -39,7 +37,6 @@ class MealsController < ApplicationController
   end
 
   def update
-    pp params
     if @meal.update_attributes(meal_params)
       redirect_to @meal
     else
@@ -47,7 +44,6 @@ class MealsController < ApplicationController
     end
   end
 
-  # TODO
   def destroy
     @meal.destroy
     flash[:info] = "#{@meal.name} has been successfully deleted."
@@ -56,6 +52,7 @@ class MealsController < ApplicationController
 
 
   private
+  
     def meal_params
       params.require(:meal).permit(
         :name, 
