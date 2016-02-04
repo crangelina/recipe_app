@@ -1,14 +1,8 @@
 class Entry < ActiveRecord::Base
+  include Taggable
   
   belongs_to :meal
-
+  has_one    :nutrition, as: :subject
   nilify_blanks
-
-  TAGS = %w(Breakfast Lunch Dinner Snack)
-
-  validates :tag, inclusion: { 
-    in: TAGS,
-    message: " (Meal) must be selected" 
-  }
 
 end

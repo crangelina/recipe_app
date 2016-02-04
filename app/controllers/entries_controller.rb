@@ -21,8 +21,8 @@ class EntriesController < ApplicationController
 
   def create
     @entry = Entry.new(entry_params)
+    
     if @entry.save
-      pp params
       flash[:success] = "#{@entry.tag} was successfully added."
       redirect_to(:back)
     else
@@ -41,10 +41,12 @@ class EntriesController < ApplicationController
   private
 
     def entry_params
-      params.require(:entry).permit(:day, 
-                                    :tag,
-                                    :note,
-                                    :meal_id)
+      params.require(:entry).permit(
+        :day, 
+        :tag,
+        :note,
+        :meal_id
+      )
     end
 
     def set_tags

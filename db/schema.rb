@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128231757) do
+ActiveRecord::Schema.define(version: 20160203194936) do
 
   create_table "directions", force: :cascade do |t|
     t.text     "step"
@@ -52,5 +52,18 @@ ActiveRecord::Schema.define(version: 20160128231757) do
     t.datetime "updated_at",  null: false
     t.string   "avatar"
   end
+
+  create_table "nutritions", force: :cascade do |t|
+    t.integer  "calories"
+    t.integer  "protein"
+    t.integer  "carbs"
+    t.integer  "fat"
+    t.integer  "subject_id"
+    t.string   "subject_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "nutritions", ["subject_type", "subject_id"], name: "index_nutritions_on_subject_type_and_subject_id"
 
 end

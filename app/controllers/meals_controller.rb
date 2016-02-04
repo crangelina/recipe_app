@@ -1,3 +1,5 @@
+require "pp"
+
 class MealsController < ApplicationController
   before_filter :set_meal, only: [:show, :update, :edit, :destroy]
   before_filter :set_tags, only: [:new, :create, :edit]
@@ -13,12 +15,14 @@ class MealsController < ApplicationController
   end
 
   def new
+    pp params
     @meal = Meal.new
     
     3.times do 
       @meal.ingredients.build
       @meal.directions.build
     end
+      @meal.build_nutrition
   end
 
   def create
@@ -61,7 +65,8 @@ class MealsController < ApplicationController
         :servings, 
         :avatar, 
         :ingredients_attributes => [:name, :amount, :id], 
-        :directions_attributes  => [:step, :id]
+        :directions_attributes  => [:step, :id],
+        :nutrition_attributes   => [:calories, :protein, :carbs, :fat]
       )
     end
 

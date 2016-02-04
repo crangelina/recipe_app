@@ -1,3 +1,5 @@
+<% @is_fluid = true %>
+
   <div class="row">
     <div class="col-sm-12">
       <h1>Entries</h1>
@@ -30,20 +32,7 @@
             <% unless breakfast.empty? %>
               <h5>Breakfast</h5>
               <ul class="breakfast-list">
-                <% breakfast.each do |entry| %>
-                  <% if entry.meal %>
-                    <li>
-                      <%= link_to entry.meal.name, meal_path(entry.meal) %> 
-                      <%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %>
-                    </li>
-                  <% end %>
-                  <% if entry.note %>
-                    <li>
-                      <%= entry.note %>
-                      <%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %>
-                    </li>
-                  <% end %>
-                <% end %>
+                <%= render partial: "meal", collection: breakfast, as: :entry %>
               </ul>
             <% end %>
         
@@ -52,20 +41,7 @@
             <% unless lunch.empty? %>
               <h5>Lunch</h5>
               <ul class="lunch-list">
-                <% lunch.each do |entry| %>
-                  <% if entry.meal %>
-                    <li>
-                      <%= link_to entry.meal.name, meal_path(entry.meal) %> 
-                      <%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %>
-                    </li>
-                  <% end %>
-                  <% if entry.note %>
-                    <li>
-                      <%= entry.note %>
-                      <%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %>
-                    </li>
-                  <% end %> 
-                <% end %>
+                <%= render partial: "meal", collection: lunch, as: :entry %>
               </ul>
             <% end %>
         
@@ -74,20 +50,7 @@
             <% unless dinner.empty? %>
               <h5>Dinner</h5>
               <ul class="dinner-list">
-                <% dinner.each do |entry| %>
-                  <% if entry.meal %>
-                    <li>
-                      <%= link_to entry.meal.name, meal_path(entry.meal) %> 
-                      <%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %>
-                    </li>
-                  <% end %>
-                  <% if entry.note %>
-                    <li>
-                      <%= entry.note %>
-                      <%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %>
-                    </li>
-                  <% end %>
-                <% end %>
+                <%= render partial: "meal", collection: dinner, as: :entry %>
               </ul>
             <% end %>
         
@@ -96,22 +59,19 @@
             <% unless snack.empty? %>
               <h5>Snack</h5>
               <ul class="snack-list">
-                <% snack.each do |entry| %> 
-                  <% if entry.meal %>
-                    <li>
-                      <%= link_to entry.meal.name, meal_path(entry.meal) %> 
-                      <%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %>
-                    </li>
-                  <% end %>
-                  <% if entry.note %>
-                    <li>
-                      <%= entry.note %>
-                      <%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %>
-                    </li>
-                  <% end %>
-                <% end %>
+                <%= render partial: "meal", collection: snack, as: :entry %>
               </ul>
             <% end %>
+
+          <% if breakfast.length > 0 || lunch.length > 0 || dinner.length > 0 || snack.length > 0 %>
+          <div class="day-nutrition">
+            <h5>Total:</h5>
+            <ul>
+              <li>2,000 cal</li>
+              <li>80g protein</li>
+            </ul>
+          </div>
+          <% end %>
       </div>
 
      

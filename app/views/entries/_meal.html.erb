@@ -1,0 +1,36 @@
+<% if entry.meal %>
+  <li>
+    <div class="list-item">
+      <%= entry.meal.name %>
+    </div>
+    <div class="toggleable">
+      <ul class="nutrition">
+        <li>100 cal</li>
+        <li>24g protein</li>
+        <li> 2 servings</li>
+        <li>
+          <%= link_to raw("<i class='fa fa-cutlery'></i>"), meal_path(entry.meal) %>
+          <%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %>
+        </li>
+      </ul>
+    </div>   
+  </li>
+<% end %>
+
+<% if entry.note %>
+  <li>
+    <div class="list-item">
+      <%= entry.note %>
+    </div>
+    <div class="toggleable">
+      <ul class="nutrition">
+        <li>100 cal</li>
+        <li>24g protein</li>
+        <li> 2 servings</li>
+        <li>
+          <%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %>
+        </li>
+      </ul>
+    </div>   
+  </li>
+<% end %>

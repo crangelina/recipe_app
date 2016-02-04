@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Recipe App</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <!-- GOOGLE FONTS -->
     <link href='https://fonts.googleapis.com/css?family=Quicksand:300|Open+Sans:400,300|Lobster' rel='stylesheet' type='text/css'>
     <!-- FONT AWESOME -->
@@ -39,7 +39,8 @@
     </nav>
 
     <!-- CONTENT -->
-    <div class="container">
+
+    <div class="<%= @is_fluid ? "container-fluid" : "container" %>">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>

@@ -1,17 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-$green    : #a1be95;
-$blue     : #92aac7;
-$red   : #a94442;
-$grey     : #5b6b7e;
-$darkgrey : #474e56;
-$lightgrey: #bdc3c7;
-$greyoutline: #585858;
-
-
-// $pink  : #ffcab8;
-// $yellow: #e2dfa2;
+@import "colors";
 
 
 
@@ -282,12 +271,14 @@ h5.form-header {
   }
   h4 {
     display: inline-block;
-    font-weight  : 300;
+    font-size: 20px;
     padding-right: 10px;
+    color: #a9a8a8;
   }
   h5 {
+    font-size: 16px;
     font-weight: 300;
-    text-decoration: underline;
+    margin: 20px 0 8px;
   }
 }
 
@@ -300,9 +291,9 @@ h5.form-header {
   margin-top: 7px;
   font-size : 16px;
   i {
-    color: $lightgrey;
+    color: $blue;
     &:hover {
-      color: $blue;
+      opacity: .7;
     }
   }
 }
@@ -315,8 +306,45 @@ h5.form-header {
     color    : $green;
     font-size: 13px;
   }
-  i:hover {
-    opacity: .8;
+  li {
+    background-color: #fbfbfb;
+    border: 1px solid #f9f9f9;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 4px;
+  }
+  li:hover {
+    background-color: #f9f9f9;
+    border-color: #f4f4f4;
+    .nutrition li {
+      background-color: #f9f9f9;
+    }
+  }
+}
+
+.toggleable {
+  display: none;
+  .nutrition {
+    li {
+    border: none;
+    }
+    i {
+      padding: 2px 5px;
+      font-size: 14px;
+      text-align: center;
+      color: $blue;
+      &:hover {
+        opacity: .8;
+      }
+    }
+  }
+}
+
+.day-nutrition {
+  border-top: 1px solid $lightgrey;
+  margin-top: 30px;
+  li {
+    font-weight: 300;
   }
 }
 

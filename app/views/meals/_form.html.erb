@@ -112,6 +112,20 @@
   <div id="more-directions-wrapper"></div>
 
 
+  <%= f.fields_for :nutrition do |ff| %>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+
+        <div class="form-group">
+          <%= f.label :calories %><br>
+          <%= f.number_field :calories, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+
   <!-- SUBMIT BUTTON --> 
   <div class="row"> 
     <div class="col-xs-12">
