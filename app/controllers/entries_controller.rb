@@ -13,10 +13,12 @@ class EntriesController < ApplicationController
 
     @week = @start..@start+5.days
     @entry = Entry.new
+    @entry.build_nutrition
   end
 
   def new
     @entry = Entry.new
+
   end
 
   def create
@@ -45,7 +47,8 @@ class EntriesController < ApplicationController
         :day, 
         :tag,
         :note,
-        :meal_id
+        :meal_id,
+        :nutrition_attributes   => [:calories, :protein, :carbs, :fat]
       )
     end
 

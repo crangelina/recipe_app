@@ -3,12 +3,11 @@
 //= require bootstrap-sprockets
 //= require_tree 
 
-//-----------------------------------//
-//             MEALS
-//----------------------------------//
+
 
 $(function() {
 
+  // Meals
   var $directionsButton   = $("#more-directions-button");
   var $directionsWrapper  = $("#more-directions-wrapper");
   var $ingredientsButton  = $("#more-ingredients-button");
@@ -16,8 +15,12 @@ $(function() {
   var directionIndex      = 3;
   var ingredientIndex     = 3;
 
+  // Entries
   var $listItem = $(".day-wrapper .list-item");
 
+//-----------------------------------//
+//             MEALS
+//----------------------------------//
 
   //------ DIRECTIONS --------//
   $directionsButton.on("click", function() {
@@ -52,11 +55,29 @@ $(function() {
 
 
 $listItem.on("click", function() {
-  $(this).siblings(".toggleable").slideToggle("slow");
+  $(this).siblings(".toggleable").slideToggle();
 })
 
 
 
+//-----------------------------------//
+//          ENTRIES MODAL
+//----------------------------------//
 
+$(".select").on("click", function() {
+  $(".entries-modal").hide(500);
+  $(".select-chosen").show(500);
+})
+
+$(".quick-add").on("click", function() {
+  $(".entries-modal").hide(500);
+  $(".quick-add-chosen").show(500);
+})
+
+$("#entriesModal").on("blur", function() {
+  $(".select-chosen").hide();
+  $(".quick-add-chosen").hide();
+  $(".entries-modal").show();
+})
 
 });

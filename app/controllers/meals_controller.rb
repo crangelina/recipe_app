@@ -15,14 +15,14 @@ class MealsController < ApplicationController
   end
 
   def new
-    pp params
     @meal = Meal.new
     
     3.times do 
       @meal.ingredients.build
       @meal.directions.build
     end
-      @meal.build_nutrition
+
+    @meal.build_nutrition
   end
 
   def create
@@ -38,6 +38,19 @@ class MealsController < ApplicationController
   end
 
   def edit
+    @meal.build_nutrition unless @meal.nutrition.present?
+
+    unless @meal.ingredients.present?
+      3.times do 
+        @meal.ingredients.build 
+      end
+    end
+
+    unless @meal.directions.present?
+      3.times do 
+        @meal.directions.build 
+      end
+    end
   end
 
   def update

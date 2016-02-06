@@ -1,0 +1,8 @@
+<% sum = 0 %>
+​
+<% snack.each do |snack| %>
+  <% nutrition = snack.meal ? snack.meal.nutrition : snack.nutrition %>
+  <% sum += nutrition.calories %>
+<% end %>
+​
+<%= sum %>

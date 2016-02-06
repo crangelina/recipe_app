@@ -100,6 +100,7 @@
     <!-- STEP -->
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
+
         <div class="form-group">
           <%= ff.text_area :step, class: "form-control", placeholder: "Step #{ff.index + 1}" %>
         </div>
@@ -114,14 +115,35 @@
 
   <%= f.fields_for :nutrition do |ff| %>
     <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-
+      <div class="col-sm-3 col-sm-offset-3">
         <div class="form-group">
-          <%= f.label :calories %><br>
-          <%= f.number_field :calories, class: "form-control" %>
+          <%= ff.label :calories, "Nutrition" %>
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-3 col-sm-offset-3">
+        <%= ff.number_field :calories, class: "form-control", placeholder: "Calories" %>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= ff.number_field :protein, class: "form-control", placeholder: "Protein (grams)" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 col-sm-offset-3">
+        <div class="form-group">
+          <%= ff.number_field :carbs, class: "form-control", placeholder: "Carbs (grams)" %>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= ff.number_field :fat, class: "form-control", placeholder: "Fat (grams)" %>
+        </div>
+      </div>
+    </div>
+
 
   <% end %>
 

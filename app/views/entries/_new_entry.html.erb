@@ -1,22 +1,31 @@
 <%= form_for @entry do |f| %>
-  
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
 
-      
-      <!-- MEAL -->
-      <div class="form-group">
+  <!-- BUTTONS -->
+  <div class="row entries-modal">
+    <div class="col-sm-12">
+      <button class="btn btn-default select" type="button">Select A Meal</button>
+      <div class="or">OR</div>
+      <button class="btn btn-default quick-add" type="button">Quick Add</button>
+    </div>
+  </div>
+
+  <!-- INPUTS -->
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+
+      <!-- SELECT -->
+      <div class="form-group select-chosen">
         <%= f.collection_select :meal_id, Meal.all, :id, :name, {prompt: "Select a meal"}, {class: "form-control"}  %>
       </div>
 
-      <!-- NOTE -->
-      <div class="form-group">
-        <%= f.label :note %><br>
+      <!-- QUICK ADD -->
+      <div class="form-group quick-add-chosen">
+        <%= f.label :note, "Name" %><br>
         <%= f.text_field :note, class: "form-control" %>
       </div>
 
-      <!-- TAG -->
-       <div class="form-group">
+      <!-- BOTH -->
+       <div class="form-group select-chosen quick-add-chosen">
         <%= f.label :tag, "Meal" %><br>
         <% if @tags %>
           <% @tags.each do |tag| %>
@@ -26,14 +35,56 @@
         <% end %>
       </div>
 
-      <!-- DAY -->
+       <!-- QUICK-ADD -->
+       <div class="quick-add-chosen">
+         <%= f.fields_for :nutrition do |ff| %>
+
+
+          <!-- QUICK ADD -->
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= ff.label :calories, "Nutrition" %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= ff.number_field :calories, class: "form-control", placeholder: "Calories" %>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= ff.number_field :protein, class: "form-control", placeholder: "Protein (grams)" %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= ff.number_field :carbs, class: "form-control", placeholder: "Carbs (grams)" %>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= ff.number_field :fat, class: "form-control", placeholder: "Fat (grams)" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- BOTH -->
       <%= f.hidden_field :day, :value => params[:day] %>
 
       <!-- SUBMIT BUTTON -->
-      <div class="form-group button-wrapper">
+      <div class="form-group button-wrapper select-chosen quick-add-chosen">
         <%= f.submit "Submit", class: "btn btn-default" %>
       </div>
     </div>
   </div>
+
+
+
+
 
 <% end %>

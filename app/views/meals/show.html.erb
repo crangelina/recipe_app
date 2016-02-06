@@ -1,29 +1,33 @@
 <!-- JUMBOTRON -->
 <div class="jumbotron" style="background-image: url(<%= @meal.avatar.url %>">
   <h1><%= @meal.name %></h1>
-    <div class="show-page-buttons">
+    <div class="show-page-buttons jumbotron-buttons">
       <button class=" btn btn-default"><%= link_to raw("<i class='fa fa-pencil'></i>"), edit_meal_path(@meal) %></button>
       <button class="btn btn-default"><%= link_to raw("<i class='fa fa-trash'></i>"), meal_path, method: "delete" %></button>
     </div>
 </div>
 
 <!-- TAG/SERVINGS/DESCRIPTION -->
-<div class="row" id="description">
-  <div class="col-sm-12 servings">
-
-    <div class="description-button">
-      <i class="fa fa-cutlery"></i><br>
-      <%= @meal.tag.capitalize %>
-    </div>
-
-    <div class="description-button">
-      <i class="fa fa-pie-chart"></i><br>
-      <%= @meal.servings %> servings 
+<div id="description-wrapper">
+  <div class="row description">
+    <div class="col-sm-8 col-sm-offset-2">
+      <p class="description-paragraph"><%= @meal.description %></p>
     </div>
   </div>
 
-  <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-    <p><%= @meal.description %></p>
+  <div class="row description">
+    <div class="col-sm-12">
+
+      <div class="description-buttons">
+        <i class="fa fa-cutlery"></i><br>
+        <%= @meal.tag.capitalize %>
+      </div>
+
+      <div class="description-buttons">
+        <i class="fa fa-pie-chart"></i><br>
+        <%= @meal.servings %> servings 
+      </div>
+    </div>
   </div>
 </div>
 
@@ -31,7 +35,12 @@
 <div class="row">
 
   <!-- INGREDIENTS -->
-  <div class="col-sm-4 col-sm-offset-2 col-xs-12">
+  <div class="col-sm-4 col-sm-offset-2 col-xs-12 show-page-buttons">
+    <h4 class="ingredients-header">Ingredients</h4>
+    <% nutrition = @meal.nutrition %>
+    <% if nutrition %>
+      <button class="btn btn-default ingredients-modal-button"><%= link_to raw("<i class='fa fa-bar-chart'></i>"), "#nutritionModal", :data => {:toggle => "modal"} %></button>
+    <% end %>
     <ul id="ingredients">
       <%= render partial: "ingredients/ingredient", collection: @ingredients %>
     </ul>
@@ -39,11 +48,57 @@
   
   <!-- DIRECTIONS -->
   <div class="col-sm-4 col-xs-10 col-xs-offset-1">
+    <h4 class="directions-header">Directions</h4>
     <ol id="directions">
       <%= render partial: "directions/direction", collection: @directions %>
     </ol>
   </div>
 
-  <div> Calories: <%= @meal.nutrition.calories %> </div>
+</div>
+
 
 </div>
+
+<!-- MODAL -->
+  <div class="modal fade" id="nutritionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Nutritional Facts</h4>
+        </div>
+
+        <div class="modal-body">
+            <ul class="nutrition-button-list">
+              <% if nutrition %>
+              <% if nutrition.calories %>
+                <li>
+                  <i class="fa fa-caret-right"></i>
+                  <span>Calories:</span> <%= @meal.nutrition.calories %>
+                </li>
+              <% end %>
+              <% if nutrition.protein %>
+                <li>
+                  <i class="fa fa-caret-right"></i>
+                  <span>Protein:</span> <%= @meal.nutrition.protein %> g
+                </li>
+              <% end %>
+              <% if nutrition.carbs %>
+                <li>
+                  <i class="fa fa-caret-right"></i>
+                  <span>Carbs:</span> <%= @meal.nutrition.carbs %> g
+                </li>
+              <% end %>
+              <% if nutrition.fat %>
+                <li>
+                  <i class="fa fa-caret-right"></i>
+                  <span>Fat:</span> <%= @meal.nutrition.fat %> g
+                </li>
+              <% end %>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+      
+    </div>
+  </div>
