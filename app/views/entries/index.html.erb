@@ -65,21 +65,25 @@
 
           <% if breakfast.length > 0 || lunch.length > 0 || dinner.length > 0 || snack.length > 0 %>
           <% entriesForToday = Entry.where(day: day.strftime('%F')) %>
-          <div class="day-nutrition">
-            <h5>Total:</h5>
-            <ul>
-              <li>Calories: <span><%= calculate_calories(entriesForToday) %></span></li>
-              <li>Protein: <span><%= calculate_protein(entriesForToday) %></span></li>
-              <li>Carbs: <span><%= calculate_carbs(entriesForToday) %></span></li>
-              <li>Fat: <span><%= calculate_fat(entriesForToday) %></span></li>
-            </ul>
-          </div>
+            <div class="day-nutrition">
+              <h5>Total:</h5>
+              <ul>
+                <% calories = :calories %>
+                <% protein = :protein %>
+                <% carbs = :carbs %>
+                <% fat = :fat %>
+                
+                <li>Calories: <span><%= calculate_nutrition(entriesForToday, calories) %></span></li>
+                <li>Protein: <span><%= calculate_nutrition(entriesForToday, protein) %></span></li>
+                <li>Carbs: <span><%= calculate_nutrition(entriesForToday, carbs) %></span></li>
+                <li>Fat: <span><%= calculate_nutrition(entriesForToday, fat) %></span></li>
+              </ul>
+            </div>
           <% end %>
-      </div>
+      </div> <!-- end of .day-wrapper -->
 
-     
     <% end %>
-  </div>
+  </div> <!-- end of .week-wrapper -->
  </div>
 
 

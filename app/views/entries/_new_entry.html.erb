@@ -13,12 +13,12 @@
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
 
-      <!-- SELECT -->
+      <!-- .SELECT-CHOSEN -->
       <div class="form-group select-chosen">
         <%= f.collection_select :meal_id, Meal.all, :id, :name, {prompt: "Select a meal"}, {class: "form-control"}  %>
       </div>
 
-      <!-- QUICK ADD -->
+      <!-- .QUICK-ADD-CHOSEN -->
       <div class="form-group quick-add-chosen">
         <%= f.label :note, "Name" %><br>
         <%= f.text_field :note, class: "form-control" %>
@@ -27,20 +27,20 @@
       <!-- BOTH -->
        <div class="form-group select-chosen quick-add-chosen">
         <%= f.label :tag, "Meal" %><br>
-        <% if @tags %>
-          <% @tags.each do |tag| %>
-            <%= f.radio_button(:tag, tag) %> &nbsp;
-            <%= f.label(:tag, tag, class: "radio-button") %><br>
+          <% if @tags %>
+            <% @tags.each do |tag| %>
+              <%= f.radio_button(:tag, tag) %> &nbsp;
+              <%= f.label(:tag, tag, class: "radio-button") %><br>
+            <% end %>
           <% end %>
-        <% end %>
       </div>
 
-       <!-- QUICK-ADD -->
+       <!-- .QUICK-ADD-CHOSEN -->
        <div class="quick-add-chosen">
          <%= f.fields_for :nutrition do |ff| %>
 
 
-          <!-- QUICK ADD -->
+          <!-- .QUICK-ADD-CHOSEN -->
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
@@ -83,8 +83,6 @@
     </div>
   </div>
 
-
-
-
-
 <% end %>
+
+

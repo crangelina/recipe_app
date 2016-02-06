@@ -2,24 +2,24 @@
   <div class="list-item">
     <%= entry.meal ? entry.meal.name : entry.note %>
   </div>
+  
   <div class="toggleable">
-    
       <ul class="nutrition">
-      <% nutrition = entry.meal ? entry.meal.nutrition : entry.nutrition %>
-      <% if nutrition %>
-        <% if nutrition.calories %>
-          <li>Calories: <%= nutrition.calories %></li>
+        <% nutrition = entry.meal ? entry.meal.nutrition : entry.nutrition %>
+        <% if nutrition %>
+          <% if nutrition.calories %>
+            <li>Calories: <%= nutrition.calories %></li>
+          <% end %>
+          <% if nutrition.protein %>
+            <li>Protein: <%= nutrition.protein %> g</li>
+          <% end %>
+          <% if nutrition.carbs %>
+            <li>Carbs: <%= nutrition.carbs %> g</li>
+          <% end %>
+          <% if nutrition.fat %>
+            <li>Fat: <%= nutrition.fat %> g</li>
+          <% end %>
         <% end %>
-        <% if nutrition.protein %>
-          <li>Protein: <%= nutrition.protein %> g</li>
-        <% end %>
-        <% if nutrition.carbs %>
-          <li>Carbs: <%= nutrition.carbs %> g</li>
-        <% end %>
-        <% if nutrition.fat %>
-          <li>Fat: <%= nutrition.fat %> g</li>
-        <% end %>
-      <% end %>
         <li>
           <%= link_to raw("<i class='fa fa-cutlery'></i>"), meal_path(entry.meal) unless entry.meal.nil? %>
           <%= link_to raw("<i class='fa fa-trash'></i>"), entry_path(entry), method: "delete" %>
