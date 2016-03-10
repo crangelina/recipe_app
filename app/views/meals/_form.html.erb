@@ -58,7 +58,6 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <h5 class="form-header">Ingredients</h5> 
-      <button id="more-ingredients-button" class="btn btn-link" type="button"><i class="fa fa-plus"></i></button>
     </div>
   </div>
 
@@ -86,12 +85,23 @@
   <!-- INGREDIENTS ADDED FROM JS -->
   <div id="more-ingredients-wrapper"></div>
 
+  <!-- MORE INGREDIENTS BTN -->
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <button id="more-ingredients-button" class="btn btn-default btn-block" type="button"><i class="fa fa-plus"></i> Add Ingredient</button>
+    </div>
+  </div>
+
+
+
+
+
 
   <!-- DIRECTIONS -->
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <h5 class="form-header">Directions</h5> 
-      <button id="more-directions-button" class="btn btn-link" type="button"><i class="fa fa-plus"></i></button>
     </div>
   </div>
 
@@ -112,15 +122,24 @@
   <!-- DIRECTIONS ADDED FROM JS -->
   <div id="more-directions-wrapper"></div>
 
+  <!-- MORE DIRECTIONS BTN -->
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <button id="more-directions-button" class="btn btn-default btn-block" type="button"><i class="fa fa-plus"></i> Add Direction</button>
+    </div>
+  </div>
+
+  <!-- DIRECTIONS -->
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h5 class="form-header">Nutrition</h5> 
+    </div>
+  </div>
 
   <%= f.fields_for :nutrition do |ff| %>
-    <div class="row">
-      <div class="col-sm-3 col-sm-offset-3">
-        <div class="form-group">
-          <%= ff.label :calories, "Nutrition" %>
-        </div>
-      </div>
-    </div>
+    
     <div class="row">
       <div class="col-sm-3 col-sm-offset-3">
         <%= ff.number_field :calories, class: "form-control", placeholder: "Calories" %>
@@ -150,9 +169,9 @@
 
   <!-- SUBMIT BUTTON --> 
   <div class="row"> 
-    <div class="col-xs-12">
+    <div class="col-sm-6 col-sm-offset-3">
       <div class="form-group" id="submit-button-wrapper">
-        <%= f.submit "Submit", class: "btn btn-default" %>
+        <%= f.submit "Submit", class: "btn btn-default btn-block" %>
       </div>
     </div>
   </div>

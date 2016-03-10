@@ -31,9 +31,9 @@
         <% end %>
         <!-- LINKS -->
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Entries", entries_path %></li>
-          <li><%= link_to "Meals", root_path %></li>
-          <li><%= link_to "New", new_meal_path %></li>
+          <li><%= link_to "Entries", entries_path, class: "#{'active' if controller?('entries') && action?('index')}" %></li>
+          <li><%= link_to "Meals", root_path, class: "#{'active' if controller?('meals') && action?('index')}" %></li>
+          <li><%= link_to "New", new_meal_path, class: "#{'active' if controller?('meals') && action?('new')}" %></li>
         </ul>
       </div>
     </nav>

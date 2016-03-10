@@ -6,7 +6,7 @@ class MealsController < ApplicationController
 
   def index
     @meals = params[:search] ? Meal.search(params[:search]) : Meal.all
-    @meals = @meals.order("id DESC").paginate(:page => params[:page], :per_page => 3)
+    @meals = @meals.order("id DESC").paginate(:page => params[:page], :per_page => 5)
   end
 
   def show

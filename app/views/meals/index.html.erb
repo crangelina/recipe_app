@@ -5,19 +5,21 @@
 </div>
   
 <!-- MEAL -->
+<div class="index-wrapper">
 <% @meals.each do |meal| %>
   
   <div class="row meal-wrapper">
-    <div class="col-sm-5 meal-picture-wrapper">
+    <div class="meal-picture-wrapper col-sm-4 col-sm-offset-2 col-xs-12">
       <%= image_tag(meal.avatar.url, class: "meal-picture-index-page") if meal.avatar? %>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-5 col-xs-12">
       <h3 class="meal-name"><%= link_to meal.name, meal_path(meal) %></h3>
       <p><%= meal.description %></p>
     </div>
   </div>
 
 <% end %>
+</div>
 
 <!-- PAGINATION -->
 <div class="row">
