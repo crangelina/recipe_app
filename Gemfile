@@ -10,6 +10,7 @@ gem "figaro"
 gem "fog"
 gem "nilify_blanks"
 gem "ejs"
+gem "devise"
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use SCSS for stylesheets

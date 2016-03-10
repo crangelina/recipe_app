@@ -30,7 +30,7 @@
           <% if @tags %>
             <% @tags.each do |tag| %>
               <%= f.radio_button(:tag, tag) %> &nbsp;
-              <%= f.label(:tag, tag, class: "radio-button") %><br>
+              <%= f.label(:tag, tag, class: "radio-button", value: tag) %><br>
             <% end %>
           <% end %>
       </div>

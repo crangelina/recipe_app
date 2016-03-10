@@ -18,9 +18,24 @@ $(function() {
   // Entries
   var $listItem = $(".day-wrapper .list-item");
 
+
+
+
 //-----------------------------------//
-//             MEALS
+//           MEALS FORM
 //----------------------------------//
+
+  $("#ingredients-header").on("click", function() {
+    $("#meal_ingredients_attributes_0_amount").focus();
+  });
+
+  $("#directions-header").on("click", function() {
+    $("#meal_directions_attributes_0_step").focus();
+  });
+
+  $("#nutrition-header").on("click", function() {
+    $("#meal_nutrition_attributes_calories").focus();
+  });
 
   //------ DIRECTIONS --------//
   $directionsButton.on("click", function() {
@@ -49,35 +64,35 @@ $(function() {
 
 
 //-----------------------------------//
-//            ENTRIES
+//          ENTRIES INDEX
 //----------------------------------//
 
-
-
-$listItem.on("click", function() {
-  $(this).siblings(".toggleable").slideToggle();
-})
+  $listItem.on("click", function() {
+    $(this).siblings(".toggleable").slideToggle();
+  });
 
 
 
 //-----------------------------------//
 //          ENTRIES MODAL
 //----------------------------------//
+  $(".modal-link").on("click", function() {
+    $(".select-chosen").hide();
+    $(".quick-add-chosen").hide();
+    $(".entries-modal").show();
+  });
 
-$(".select").on("click", function() {
-  $(".entries-modal").hide(500);
-  $(".select-chosen").show(500);
-})
+  $(".select").on("click", function() {
+    $(".entries-modal").hide(500);
+    $(".select-chosen").show(500);
+  });
 
-$(".quick-add").on("click", function() {
-  $(".entries-modal").hide(500);
-  $(".quick-add-chosen").show(500);
-})
+  $(".quick-add").on("click", function() {
+    $(".entries-modal").hide(500);
+    $(".quick-add-chosen").show(500);
+  });
 
-$("#entriesModal").on("blur", function() {
-  $(".select-chosen").hide();
-  $(".quick-add-chosen").hide();
-  $(".entries-modal").show();
-})
+
+
 
 });
