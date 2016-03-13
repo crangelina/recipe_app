@@ -23,13 +23,10 @@ class MealsController < ApplicationController
   def new
     @meal = Meal.new
     
-    3.times do 
-      @meal.ingredients.build
-      @meal.directions.build
-    end
+    3.times { @meal.directions.build }
+    5.times { @meal.ingredients.build }
 
     @meal.build_nutrition
-    @meal.tags.build
   end
 
   def create

@@ -13,7 +13,7 @@ class Meal < ActiveRecord::Base
   accepts_nested_attributes_for :tags,        reject_if: :all_blank
   accepts_nested_attributes_for :meal_tags,   reject_if: :all_blank
 
-  validates :name, :description, :servings, presence: true
+  validates :name, :servings, presence: true
   
   mount_uploader :avatar, AvatarUploader
   

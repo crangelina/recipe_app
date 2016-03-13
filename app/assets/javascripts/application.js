@@ -39,16 +39,18 @@ $(function() {
 
   //------ DIRECTIONS --------//
   $directionsButton.on("click", function() {
-    $html = JST["templates/directions-template"]({index: directionIndex});
+    var $html = $(JST["templates/directions-template"]({index: directionIndex}));
     $directionsWrapper.append($html);
+    $html.find("textarea").focus();
 
     directionIndex++
   });
 
   //------ INGREDIENTS --------//
   $ingredientsButton.on("click", function() {
-    $html = JST["templates/ingredients-template"]({index: ingredientIndex});
+    var $html = $(JST["templates/ingredients-template"]({index: ingredientIndex}));
     $ingredientsWrapper.append($html);
+    $html.find("input").first().focus();
 
     ingredientIndex++
   });

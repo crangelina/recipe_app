@@ -14,7 +14,7 @@
 
   <!-- MEAL -->
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-md-6 col-md-offset-3 col-sm-12">
 
       <!-- NAME -->
       <div class="form-group">
@@ -65,7 +65,7 @@
 
   <!-- INGREDIENTS -->
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-md-6 col-md-offset-3 col-sm-6">
       <h5 class="form-header" id="ingredients-header">Ingredients</h5> 
     </div>
   </div>
@@ -74,14 +74,14 @@
 
     <!-- AMOUNT -->
     <div class="row">
-      <div class="col-sm-3 col-sm-offset-3">  
+      <div class="col-md-3 col-md-offset-3 col-sm-6 col-xs-6">  
         <div class="form-group">
           <%= ff.text_field :amount, class: "form-control", placeholder: "Amount" %>
         </div>
       </div>
 
       <!-- NAME -->
-      <div class="col-sm-3">
+      <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="form-group">
           <%= ff.text_field :name, class: "form-control", placeholder: "Name" %>
         </div>
@@ -97,7 +97,7 @@
   <!-- MORE INGREDIENTS BTN -->
 
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-md-6 col-md-offset-3 col-sm-12">
       <button id="more-ingredients-button" class="btn btn-default btn-block" type="button"><i class="fa fa-plus"></i> Add Ingredient</button>
     </div>
   </div>
@@ -109,7 +109,7 @@
 
   <!-- DIRECTIONS -->
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-md-6 col-md-offset-3 col-sm-6">
       <h5 class="form-header" id="directions-header">Directions</h5> 
     </div>
   </div>
@@ -118,7 +118,7 @@
 
     <!-- STEP -->
     <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
+      <div class="col-md-6 col-md-offset-3 col-sm-12">
 
         <div class="form-group">
           <%= ff.text_area :step, class: "form-control", placeholder: "Step #{ff.index + 1}" %>
@@ -134,7 +134,7 @@
   <!-- MORE DIRECTIONS BTN -->
 
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-md-6 col-md-offset-3 col-sm-12">
       <button id="more-directions-button" class="btn btn-default btn-block" type="button"><i class="fa fa-plus"></i> Add Direction</button>
     </div>
   </div>
@@ -142,7 +142,7 @@
   <!-- DIRECTIONS -->
 
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-md-6 col-md-offset-3 col-sm-6">
       <h5 class="form-header" id="nutrition-header">Nutrition</h5> 
     </div>
   </div>
@@ -150,22 +150,22 @@
   <%= f.fields_for :nutrition do |ff| %>
     
     <div class="row">
-      <div class="col-sm-3 col-sm-offset-3">
+      <div class="col-md-3 col-md-offset-3 col-sm-6 col-xs-6">
         <%= ff.number_field :calories, class: "form-control", placeholder: "Calories" %>
       </div>
-      <div class="col-sm-3">
+      <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="form-group">
           <%= ff.number_field :protein, class: "form-control", placeholder: "Protein (grams)" %>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-3 col-sm-offset-3">
+      <div class="col-md-3 col-md-offset-3 col-sm-6 col-xs-6">
         <div class="form-group">
           <%= ff.number_field :carbs, class: "form-control", placeholder: "Carbs (grams)" %>
         </div>
       </div>
-      <div class="col-sm-3">
+      <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="form-group">
           <%= ff.number_field :fat, class: "form-control", placeholder: "Fat (grams)" %>
         </div>
@@ -181,7 +181,7 @@
 
   <!-- SUBMIT BUTTON --> 
   <div class="row"> 
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-md-6 col-md-offset-3 col-sm-12">
       <div class="form-group" id="submit-button-wrapper">
         <%= f.submit "Submit", class: "btn btn-default btn-block" %>
       </div>
