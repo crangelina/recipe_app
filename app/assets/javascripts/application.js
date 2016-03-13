@@ -92,7 +92,10 @@ $(function() {
     $(".quick-add-chosen").show(500);
   });
 
-
+  $(".select2").select2({
+    tags: true,
+    tokenSeparators: [',', ' ']
+  })
 
 
 });

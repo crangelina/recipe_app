@@ -20,7 +20,7 @@
 
       <div class="description-buttons">
         <i class="fa fa-cutlery"></i><br>
-        <%= @meal.tag.capitalize %>
+        Breakfast
       </div>
 
       <div class="description-buttons">
@@ -29,7 +29,18 @@
       </div>
     </div>
   </div>
-</div>
+
+
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <% @meal.tags.each do |tag| %>
+        <p class="badge"><%= tag.name %></p>
+      <% end %>
+    </div>
+  </div>
+
+  </div>
+
 
 
 <div class="row">

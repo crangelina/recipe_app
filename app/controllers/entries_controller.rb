@@ -2,9 +2,10 @@ require "pp"
 
 class EntriesController < ApplicationController
 
-  before_filter :set_tags, only: [:index, :new, :create]
+  before_filter :set_meal_type, only: [:index, :new, :create]
 
   def index
+    @user = current_user
     if params[:date]
       @start = Date.parse(params[:date]).at_beginning_of_week
     else
@@ -25,7 +26,7 @@ class EntriesController < ApplicationController
     @entry = Entry.new(entry_params)
     
     if @entry.save
-      flash[:success] = "#{@entry.tag} was successfully added."
+      flash[:success] = "#{@entry.meal_type} was successfully added."
       redirect_to(:back)
     else
       flash[:info] = "The meal was not successfully added."
@@ -36,7 +37,7 @@ class EntriesController < ApplicationController
   def destroy
     @entry = Entry.find(params[:id])
     @entry.destroy
-    flash[:info] = "#{@entry.tag} has been successfully deleted."
+    flash[:info] = "#{@entry.meal_type} has been successfully deleted."
     redirect_to(:back)
   end
 
@@ -45,15 +46,16 @@ class EntriesController < ApplicationController
     def entry_params
       params.require(:entry).permit(
         :day, 
-        :tag,
+        :meal_type,
         :note,
         :meal_id,
+        :user_id, 
         :nutrition_attributes   => [:calories, :protein, :carbs, :fat]
       )
     end
 
-    def set_tags
-      @tags = Meal::TAGS
+    def set_meal_type
+      @meal_type = Entry::MEALTYPE
     end
     
 end

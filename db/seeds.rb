@@ -3,6 +3,7 @@ Meal.create(name: "Apple Pie",
             description: "Flaky, awesome deliciousness!",
             tag: "Snack",
             servings: "12",
+            user_id: 1,
             remote_avatar_url: "http://images.edge-generalmills.com/a7a5665b-4b49-4454-91fd-95291cd3b433.jpg",
             :ingredients_attributes => [name: "sugar", amount: "1 cup"],
             :directions_attributes => [step: "Preheat oven to 425 degrees F (220 degrees C). Melt the butter in a saucepan. Stir in flour to form a paste. Add water, white sugar and brown sugar, and bring to a boil. Reduce temperature and let simmer."])

@@ -2,12 +2,18 @@ require "pp"
 
 class MealsController < ApplicationController
   before_filter :set_meal, only: [:show, :update, :edit, :destroy]
-  before_filter :set_tags, only: [:new, :create, :edit]
 
-  def index
-    @meals = params[:search] ? Meal.search(params[:search]) : Meal.all
-    @meals = @meals.order("id DESC").paginate(:page => params[:page], :per_page => 5)
-  end
+  def index  
+    if params[:search]
+      @meals = current_user.meals.search(params[:search]) 
+    elsif params[:tag]
+      @meals = current_user.tags.find_by(name: params[:tag]).meals
+    else 
+      @meals = current_user.meals
+    end
+
+      @meals = @meals.order("id DESC").paginate(:page => params[:page], :per_page => 5)
+    end
 
   def show
     @ingredients = @meal.ingredients
@@ -23,12 +29,15 @@ class MealsController < ApplicationController
     end
 
     @meal.build_nutrition
+    @meal.tags.build
   end
 
   def create
     @meal = Meal.new(meal_params)
+    
 
     if @meal.save
+      create_tags
       flash[:success] = "#{@meal.name} has been successfully created."
       redirect_to @meal
     else
@@ -55,6 +64,7 @@ class MealsController < ApplicationController
 
   def update
     if @meal.update_attributes(meal_params)
+      create_tags
       redirect_to @meal
     else
       render action: "edit"
@@ -77,18 +87,28 @@ class MealsController < ApplicationController
         :tag, 
         :servings, 
         :avatar, 
+        :user_id,
         :ingredients_attributes => [:name, :amount, :id], 
         :directions_attributes  => [:step, :id],
-        :nutrition_attributes   => [:calories, :protein, :carbs, :fat]
+        :nutrition_attributes   => [:calories, :protein, :carbs, :fat],
+        :tags_attributes        => [:name, :color, :user_id, :id]
       )
     end
 
     def set_meal
       @meal = Meal.find(params[:id])
+      return render file: "public/401.html" if @meal.user_id != current_user.id
     end
 
-    def set_tags
-      @tags = Meal::TAGS
+    def create_tags
+      @meal.meal_tags.destroy_all
+
+      return if params[:tags].nil?
+
+      params[:tags].each do |tag_value| 
+        tag = Tag.find_or_create_by(name: tag_value, user_id: current_user.id)
+        @meal.tags << tag 
+      end
     end
 
 end

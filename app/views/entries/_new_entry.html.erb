@@ -15,7 +15,7 @@
 
       <!-- .SELECT-CHOSEN -->
       <div class="form-group select-chosen">
-        <%= f.collection_select :meal_id, Meal.all, :id, :name, {prompt: "Select a meal"}, {class: "form-control"}  %>
+        <%= f.collection_select :meal_id, @user.meals, :id, :name, {prompt: "Select a meal"}, {class: "form-control"}  %>
       </div>
 
       <!-- .QUICK-ADD-CHOSEN -->
@@ -27,10 +27,10 @@
       <!-- BOTH -->
        <div class="form-group select-chosen quick-add-chosen">
         <%= f.label :tag, "Meal" %><br>
-          <% if @tags %>
-            <% @tags.each do |tag| %>
-              <%= f.radio_button(:tag, tag) %> &nbsp;
-              <%= f.label(:tag, tag, class: "radio-button", value: tag) %><br>
+          <% if @meal_type %>
+            <% @meal_type.each do |type| %>
+              <%= f.radio_button(:meal_type, type) %> &nbsp;
+              <%= f.label(:meal_type, type, class: "radio-button", value: type) %><br>
             <% end %>
           <% end %>
       </div>
@@ -74,7 +74,8 @@
       </div>
 
       <!-- BOTH -->
-      <%= f.hidden_field :day, :value => params[:day] %>
+      <%= f.hidden_field :day, value: params[:day] %>
+      <%= f.hidden_field :user_id, value: @user.id %>
 
       <!-- SUBMIT BUTTON -->
       <div class="form-group button-wrapper select-chosen quick-add-chosen">

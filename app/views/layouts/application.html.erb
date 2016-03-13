@@ -4,6 +4,8 @@
     <title>Recipe App</title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
     <!-- GOOGLE FONTS -->
     <link href='https://fonts.googleapis.com/css?family=Quicksand:300|Open+Sans:400,300|Lobster' rel='stylesheet' type='text/css'>
     <!-- FONT AWESOME -->
@@ -22,15 +24,8 @@
             <%= image_tag("logo.png", class: "logo") %>
           <% end %>
         </div>
-        <!-- SEARCH -->
-        <%= form_tag meals_path, :method => "get", class: "navbar-form navbar-right" do %>
-          <div class="form-group">
-            <%= text_field_tag :search, params[:search], placeholder: "Name of meal", class: "form-control" %>
-            <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
-          </div>
-        <% end %>
         <!-- LINKS -->
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav">
           <li><%= link_to "Entries", entries_path, class: "#{'active' if controller?('entries') && action?('index')}" %></li>
           <li><%= link_to "Meals", root_path, class: "#{'active' if controller?('meals') && action?('index')}" %></li>
           <li><%= link_to "New", new_meal_path, class: "#{'active' if controller?('meals') && action?('new')}" %></li>
@@ -44,7 +39,7 @@
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
-
+      
       <%= yield %>
       
     </div>
