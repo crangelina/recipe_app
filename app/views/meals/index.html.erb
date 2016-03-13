@@ -6,7 +6,7 @@
 
 <!-- SEARCH -->
 <div class="row">
-  <div class="col-sm-8 col-sm-offset-2">
+  <div class="col-sm-7 col-sm-offset-2">
     <%= form_tag meals_path, :method => "get", class: "" do %>
       <div class="form-group">
         <%= text_field_tag :search, params[:search], placeholder: "Name, tag, type", class: "form-control input-lg" %>
@@ -20,29 +20,33 @@
 
   
 <!-- MEAL -->
-<div class="index-wrapper">
-  <div class="row meal-wrapper">
-    <div class="col-sm-2 col-xs-12 pull-right">
+<div class="index-wrapper row">
+  
+    <div class="col-sm-3 col-xs-12 pull-right">
       <ul class="tag-list list-unstyled">
         <% current_user.tags.each do |tag| %>
           <li class="badge"><%= tag.name %></li>
         <% end %>
       </ul>
     </div>
-<% @meals.each do |meal| %>
-    <div class="meal-picture-wrapper col-sm-3 col-sm-offset-1 col-xs-12">
-      <%= image_tag(meal.avatar.url, class: "meal-picture-index-page") if meal.avatar? %>
+ 
+ <div class="col-sm-9">
+  <% @meals.each do |meal| %>
+    <div class="row meal-wrapper">
+      <div class="meal-picture-wrapper col-sm-3 col-xs-12">
+        <%= image_tag(meal.avatar.url, class: "meal-picture-index-page") if meal.avatar? %>
+      </div>
+      <div class="col-sm-8 col-xs-12">
+        <h3 class="meal-name"><%= link_to meal.name, meal_path(meal) %></h3>
+        <p><%= meal.description %></p>
+        <% meal.tags.each do |tag| %>
+          <%= link_to tag.name, meals_path(tag: tag.name), class: "badge" %>
+        <% end %>
+      </div>
     </div>
-    <div class="col-sm-5 col-xs-12">
-      <h3 class="meal-name"><%= link_to meal.name, meal_path(meal) %></h3>
-      <p><%= meal.description %></p>
-      <% meal.tags.each do |tag| %>
-        <%= link_to tag.name, meals_path(tag: tag.name), class: "badge" %>
-      <% end %>
-    </div>
-  </div>
 
-<% end %>
+    <% end %>
+  </div>
 </div>
 
 <!-- PAGINATION -->

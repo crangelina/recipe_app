@@ -203,8 +203,11 @@ a.navbar-brand:hover {
   }
 }
 
-.tag-list .badge {
-  margin: 3px;
+.tag-list {
+  margin: 20px 0;
+  .badge {
+    margin: 3px;
+  }
 }
 
 
