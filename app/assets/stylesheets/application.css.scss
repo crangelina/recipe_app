@@ -139,7 +139,8 @@ a.navbar-brand:hover {
   margin-top: -4px;
 }
 
-.navbar-default .navbar-nav li {
+.navbar-default .navbar-nav li,
+.navbar-default .logout {
   a.active {
     color: #fff;
     background-color: $green;
