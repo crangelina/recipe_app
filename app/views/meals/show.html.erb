@@ -2,8 +2,12 @@
 <div class="jumbotron" style="background-image: url(<%= @meal.avatar.url %>">
   <h1><%= @meal.name %></h1>
     <div class="show-page-buttons jumbotron-buttons">
-      <button class=" btn btn-default"><%= link_to raw("<i class='fa fa-pencil'></i>"), edit_meal_path(@meal) %></button>
-      <button class="btn btn-default"><%= link_to raw("<i class='fa fa-trash'></i>"), meal_path, method: "delete", :data => {confirm: "Are you sure?"} %></button>
+        <%= link_to edit_meal_path(@meal), class: "btn btn-default" do %>
+          <i class='fa fa-pencil'></i> 
+        <% end %>
+        <%= link_to meal_path, method: "delete", :data => {confirm: "Are you sure?"}, class: "btn btn-default" do %>
+          <i class='fa fa-trash'></i>
+        <% end %>
     </div>
 </div>
 
@@ -20,7 +24,7 @@
 
       <div class="description-buttons">
         <i class="fa fa-cutlery"></i><br>
-        Breakfast
+        Protein
       </div>
 
       <div class="description-buttons">
@@ -50,7 +54,9 @@
     <h4 class="ingredients-header">Ingredients</h4>
     <% nutrition = @meal.nutrition %>
     <% if nutrition %>
-      <button class="btn btn-default ingredients-modal-button"><%= link_to raw("<i class='fa fa-bar-chart'></i>"), "#nutritionModal", :data => {:toggle => "modal"} %></button>
+      <%= link_to  "#nutritionModal", data: {toggle: "modal"}, class: "btn btn-default ingredients-modal-button" do %>
+        <i class='fa fa-bar-chart'></i>
+      <% end %>
     <% end %>
     <ul id="ingredients">
       <%= render partial: "ingredients/ingredient", collection: @ingredients %>

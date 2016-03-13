@@ -25,7 +25,7 @@
     <div class="col-sm-3 col-xs-12 pull-right">
       <ul class="tag-list list-unstyled">
         <% current_user.tags.each do |tag| %>
-          <li class="badge"><%= tag.name %></li>
+          <li><%= link_to tag.name, meals_path(tag: tag.name), class: "badge" %></li>
         <% end %>
       </ul>
     </div>
